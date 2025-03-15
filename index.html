@@ -391,8 +391,6 @@
       this.width = grid[0].length;
 
       this.dom.style.setProperty('--board-size', grid[0].length);
-      this.dom.setAttribute('data-count', this.moves);
-      this.dom.removeAttribute('data-color');
 
       let random = [];
 
@@ -495,7 +493,6 @@
 
     floodColor(newColor) {
       this.currentColor = newColor;
-      this.moves += 1;
 
       let hadDirty = false;
       do {
@@ -552,7 +549,7 @@
       } else {
         this.dom.removeAttribute('data-last');
       }
-      this.dom.setAttribute('data-count', this.moves);
+      document.getElementById('moves').innerText = this.moves;
     }
   }
 
