@@ -1,6 +1,6 @@
 <!doctype html>
 <!--<html class="no-js" lang="" manifest="cache.manifest">-->
-<html>
+<html lang="en">
 
 <head>
   <title>Syvannah's Paint Game</title>
@@ -9,17 +9,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
 
-<!--  <meta property="og:title" content="">-->
-<!--  <meta property="og:type" content="">-->
-<!--  <meta property="og:url" content="">-->
-<!--  <meta property="og:image" content="">-->
-<!--  <meta property="og:image:alt" content="">-->
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
 
-<!--  <link rel="icon" href="/favicon.ico" sizes="any">-->
-<!--  <link rel="icon" href="/icon.svg" type="image/svg+xml">-->
-<!--  <link rel="apple-touch-icon" href="icon.png">-->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
 
-<!--  <link rel="manifest" href="site.webmanifest">-->
+  <link rel="manifest" href="site.webmanifest">
 
   <style>
     body {
@@ -243,6 +243,8 @@
       border: var(--select-border-size) solid var(--select-color);
     }
   </style>
+
+  <script type="text/javascript" src="js/levels.js"></script>
 </head>
 
 <body>
@@ -264,129 +266,10 @@
 
 
 <script>
-  const CellKind = {
-    Start: 0,
-    Random: 1,
-    Empty: null,
-  };
-  let levels = (() => {
-    let E = CellKind.Empty;
-    let R = CellKind.Random;
-    let S = CellKind.Start;
-    return [
-      {
-        name: 'small', maxMoves: 5, grid: [
-          [S, R, R, R,],
-          [E, E, E, E,],
-          [R, R, R, R,],
-          [R, R, R, S,],
-        ]
-      },
-      {
-        name: 'circle', maxMoves: 25, grid: [
-          [E, E, S, R, R, R, R, R, E, E,],
-          [E, R, R, R, R, R, R, R, R, E,],
-          [R, R, R, R, R, R, R, R, R, R,],
-          [R, R, R, R, R, R, R, R, R, R,],
-          [R, R, R, R, E, E, R, R, R, R,],
-          [R, R, R, R, E, E, R, R, R, R,],
-          [R, R, R, R, R, R, R, R, R, R,],
-          [R, R, R, R, R, R, R, R, R, R,],
-          [E, R, R, R, R, R, R, R, R, E,],
-          [E, E, R, R, R, R, R, R, E, E,],
-        ]
-      },
-      {
-        name: 'cross', maxMoves: 25, grid: [
-          [E, E, E, S, R, R, R, E, E, E,],
-          [E, E, E, R, R, R, R, E, E, E,],
-          [E, E, E, R, R, R, R, E, E, E,],
-          [R, R, R, R, R, R, R, R, R, R,],
-          [R, R, R, R, R, R, R, R, R, R,],
-          [R, R, R, R, R, R, R, R, R, R,],
-          [R, R, R, R, R, R, R, R, R, R,],
-          [E, E, E, R, R, R, R, E, E, E,],
-          [E, E, E, R, R, R, R, E, E, E,],
-          [E, E, E, R, R, R, R, E, E, E,],
-        ]
-      },
-      {
-        name: 'snake', maxMoves: 25, grid: [
-          [S, R, E, E, R, R, R, R, R, R,],
-          [R, R, E, E, R, R, R, R, R, R,],
-          [R, R, E, E, R, R, E, E, R, R,],
-          [R, R, E, E, R, R, E, E, R, R,],
-          [R, R, E, E, R, R, E, E, R, R,],
-          [R, R, E, E, R, R, E, E, R, R,],
-          [R, R, E, E, R, R, E, E, R, R,],
-          [R, R, E, E, R, R, E, E, R, R,],
-          [R, R, R, R, R, R, E, E, R, R,],
-          [R, R, R, R, R, R, E, E, R, S,],
-        ]
-      },
-      {
-        name: 'dom loves you!', maxMoves: 25, grid: [
-          [E, E, E, R, E, E, E, R, E, E, E,],
-          [E, R, R, R, R, E, R, R, R, R, E,],
-          [R, R, R, R, R, R, R, R, R, R, R,],
-          [R, R, R, R, R, R, R, R, R, R, R,],
-          [R, R, R, R, R, S, R, R, R, R, R,],
-          [E, R, R, R, R, R, R, R, R, R, E,],
-          [E, R, R, R, R, R, R, R, R, R, E,],
-          [E, E, R, R, R, R, R, R, R, E, E,],
-          [E, E, E, E, R, R, R, E, E, E, E,],
-          [E, E, E, E, E, R, E, E, E, E, E,],
-        ]
-      },
-      {
-        name: 'EMPTY', maxMoves: 25, grid: [
-          [E, E, E, E, E, E, E, E, E, E,],
-          [E, E, E, E, E, E, E, E, E, E,],
-          [E, E, E, E, E, E, E, E, E, E,],
-          [E, E, E, E, E, E, E, E, E, E,],
-          [E, E, E, E, E, E, E, E, E, E,],
-          [E, E, E, E, E, E, E, E, E, E,],
-          [E, E, E, E, E, E, E, E, E, E,],
-          [E, E, E, E, E, E, E, E, E, E,],
-          [E, E, E, E, E, E, E, E, E, E,],
-          [E, E, E, E, E, E, E, E, E, E,],
-        ]
-      },
-      {
-        name: 'Arrow', maxMoves: 25, grid: [
-          [E, E, E, S, E, E, E, E, E, E, E,],
-          [E, E, R, R, R, E, E, E, E, E, E,],
-          [E, R, R, R, R, R, E, E, E, E, E,],
-          [R, R, R, R, R, R, R, E, E, E, E,],
-          [E, E, R, R, R, E, E, R, E, E, E,],
-          [E, E, R, R, R, E, E, R, R, E, E,],
-          [E, E, R, R, R, R, R, R, R, R, E,],
-          [E, E, R, R, R, R, R, R, R, R, R,],
-          [E, E, R, R, R, R, R, R, R, R, E,],
-          [E, E, E, E, E, E, E, R, R, E, E,],
-          [E, E, E, E, E, E, E, R, E, E, E,],
-        ]
-      },
-      {
-        name: 'PENIS', maxMoves: 13, grid: [
-          [E, E, E, E, E, R, E, E, E, E,],
-          [E, E, E, E, R, R, R, E, E, E,],
-          [E, E, E, E, R, R, R, E, E, E,],
-          [E, E, E, E, R, R, R, E, E, E,],
-          [E, E, E, E, R, R, R, E, E, E,],
-          [E, E, E, E, R, R, R, E, E, E,],
-          [E, E, R, R, R, R, R, R, R, E,],
-          [E, R, R, R, R, S, R, R, R, R,],
-          [E, E, R, R, R, E, R, R, R, E,],
-          [E, E, E, E, E, E, E, E, E, E,],
-        ]
-      },
-    ];
-  })();
   let selector = document.getElementById('boardSelection');
-  for (let level = 0; level < levels.length; level++) {
+  for (let level = 0; level < LEVELS.length; level++) {
     let option = document.createElement('option');
-    option.text = levels[level].name;
+    option.text = LEVELS[level].name;
     option.value = level + '';
     if (level === 0) {
       option.selected = true;
@@ -678,7 +561,7 @@
     if (selector.value === '') {
       document.getElementById('controls').style.display = 'none';
     } else {
-      initGame(levels[selector.value]);
+      initGame(LEVELS[selector.value]);
       document.getElementById('controls').style.display = null;
     }
   }
