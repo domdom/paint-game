@@ -7,14 +7,17 @@ class Board {
         }
     }
 
-    init(grid) {
+    init(name, grid, maxMoves) {
         this.dom.innerHTML = '';
+
+        this.levelName = name;
 
         this.cells = [];
         this.owned = new Set();
         this.currentColor = null;
         this.start = [];
         this.moves = 0;
+        this.maxMoves = maxMoves;
 
         this.special = {
             lock: null,
@@ -184,6 +187,8 @@ class Board {
         } else {
             this.dom.removeAttribute('data-last');
         }
+        document.title = "SPG: " + this.levelName;
         document.getElementById('moves').innerText = this.moves;
+        document.getElementById('maxMoves').innerText = this.maxMoves;
     }
 }

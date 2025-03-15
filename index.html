@@ -326,14 +326,12 @@
   let BOARD = new Board(document.getElementById('board'));
 
   function initGame(board) {
-    document.getElementById('moves').innerText = '0';
-    document.getElementById('maxMoves').innerText = board.maxMoves;
 
     let target = document.getElementById('target');
 
     setColor(target, getRandomColor());
 
-    BOARD.init(board.grid)
+    BOARD.init(board.name, board.grid, board.maxMoves)
   }
 
   updateBoard();
