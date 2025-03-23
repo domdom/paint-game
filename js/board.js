@@ -85,10 +85,6 @@ class Board {
         return this.cells[row * this.width + column];
     }
 
-    getCells() {
-        return this.cells.filter(c => c !== null);
-    }
-
     getNeighbors(cell) {
         let dr = [1, 0, -1, 0];
         let dc = [0, 1, 0, -1];
@@ -167,7 +163,8 @@ class Board {
                 if (cell === this.special.reset) {
                     this.special.reset.removeSpecial();
                     this.special.reset = null;
-                    for (let cell of this.getCells()) {
+                    for (let cell of this.cells) {
+                        if (!cell) continue;
                         if (this.owned.has(cell)) continue;
                         if (cell.getColor() === null) continue;
 
@@ -178,7 +175,7 @@ class Board {
                         }
                         cell.setColor(color);
 
-                        let dirty = this.getOwnedNeighbor(cell);
+                        let dirty = this.getOwnedNeighbor(cell) && cell.getColor() === this.currentColor;
                         if (dirty !== null) {
                             hadDirty = true;
                         }
