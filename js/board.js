@@ -46,7 +46,13 @@ class Board {
                     this.cells[this.cells.length - 1] = null;
                 }
                 if (grid[row][column] === CellKind.Random) {
-                    cell.setColor(getRandomColor());
+                    let color = getRandomColor();
+                    if (this.getCell(row, column - 1)?.getColor() === color ||
+                        this.getCell(row - 1, column)?.getColor() === color) {
+                        color = getRandomColor();
+                    }
+                    cell.setColor(color);
+
                     cell.dom.onclick = () => {
                         if (cell.getColor() === null) return;
                         if (cell.getColor() === this.currentColor) return;
@@ -164,7 +170,14 @@ class Board {
                     for (let cell of this.getCells()) {
                         if (this.owned.has(cell)) continue;
                         if (cell.getColor() === null) continue;
-                        cell.setColor(getRandomColor());
+
+                        let color = getRandomColor();
+                        if (this.getCell(cell.row - 1, cell.column)?.getColor() === color ||
+                            this.getCell(cell.row, cell.column - 1)?.getColor() === color) {
+                            color = getRandomColor();
+                        }
+                        cell.setColor(color);
+
                         let dirty = this.getOwnedNeighbor(cell);
                         if (dirty !== null) {
                             hadDirty = true;
