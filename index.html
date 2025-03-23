@@ -1,30 +1,30 @@
 <!doctype html>
-<!--<html class="no-js" lang="" manifest="cache.manifest">-->
 <html lang="en">
 
 <head>
   <title>Syvannah's Paint Game</title>
 
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-  <meta property="og:image:alt" content="">
+  <link href="favicon.ico" rel="icon" sizes="any">
+  <link href="icon.svg" rel="icon" type="image/svg+xml">
+  <link href="icon.png" rel="apple-touch-icon">
 
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="icon.png">
-
-  <link rel="manifest" href="site.webmanifest">
+  <link href="site.webmanifest" rel="manifest">
 
   <style>
     body {
       margin: 0;
+      position: absolute;
+      width: 100%;
+      min-width: fit-content;
       font-family: Verdana, sans-serif;
+    }
+    #container {
+      padding: 1em;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: fit-content;
     }
 
     :root {
@@ -91,12 +91,6 @@
     .board[data-last="6"] :not([data-color="6"]):not([data-color="empty"])[data-color] { cursor: pointer; }
     .board:not([data-last]) [data-color]:not([data-color="empty"]) { cursor: pointer; }
     /* @formatter:on */
-
-    #container {
-      display: flex;
-      padding: 1em;
-      gap: 1em;
-    }
 
     #game {
       display: flex;
@@ -180,27 +174,27 @@
     .cell[data-color="start"] {
       position: relative;
       background: repeating-linear-gradient(
-        90deg,
-        oklch(from var(--color-1) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 0%)),
-        oklch(from var(--color-2) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 16%)),
-        oklch(from var(--color-3) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 33%)),
-        oklch(from var(--color-4) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 50%)),
-        oklch(from var(--color-5) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 66%)),
-        oklch(from var(--color-6) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 83%)),
-        oklch(from var(--color-1) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 100%))
+              90deg,
+              oklch(from var(--color-1) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 0%)),
+              oklch(from var(--color-2) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 16%)),
+              oklch(from var(--color-3) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 33%)),
+              oklch(from var(--color-4) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 50%)),
+              oklch(from var(--color-5) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 66%)),
+              oklch(from var(--color-6) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 83%)),
+              oklch(from var(--color-1) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 100%))
       );
     }
 
     .cell[data-color="start"]::after {
       background: repeating-linear-gradient(
-        45deg,
-        var(--color-1) calc(2 * (var(--start-offset) + 0%)),
-        var(--color-2) calc(2 * (var(--start-offset) + 16%)),
-        var(--color-3) calc(2 * (var(--start-offset) + 33%)),
-        var(--color-4) calc(2 * (var(--start-offset) + 50%)),
-        var(--color-5) calc(2 * (var(--start-offset) + 66%)),
-        var(--color-6) calc(2 * (var(--start-offset) + 83%)),
-        var(--color-1) calc(2 * (var(--start-offset) + 100%))
+              45deg,
+              var(--color-1) calc(2 * (var(--start-offset) + 0%)),
+              var(--color-2) calc(2 * (var(--start-offset) + 16%)),
+              var(--color-3) calc(2 * (var(--start-offset) + 33%)),
+              var(--color-4) calc(2 * (var(--start-offset) + 50%)),
+              var(--color-5) calc(2 * (var(--start-offset) + 66%)),
+              var(--color-6) calc(2 * (var(--start-offset) + 83%)),
+              var(--color-1) calc(2 * (var(--start-offset) + 100%))
       );
       mask-repeat: no-repeat;
       mask-size: cover;
@@ -244,10 +238,10 @@
     }
   </style>
 
-  <script type="text/javascript" src="js/levels.js"></script>
-  <script type="text/javascript" src="js/cell.js"></script>
-  <script type="text/javascript" src="js/board.js"></script>
-  <script type="text/javascript" src="js/ui.js"></script>
+  <script src="js/levels.js" type="text/javascript"></script>
+  <script src="js/cell.js" type="text/javascript"></script>
+  <script src="js/board.js" type="text/javascript"></script>
+  <script src="js/ui.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -277,6 +271,7 @@
     }
     return result;
   };
+
   function setColor(node, color) {
     if (color === null) {
       return node?.removeAttribute('data-color');
