@@ -55,6 +55,6 @@ const fetchFirst = async (event, request) => {
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    fetchFirst({ event: event, request: event.request }),
+    fetchFirst(event, event.request)
   );
 });
