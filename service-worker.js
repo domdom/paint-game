@@ -1,16 +1,16 @@
 const CACHE_VERSION = "paint-game-v1";
 const resources = [
-    "/",
-    "/index.html",
-    "/js/board.js",
-    "/js/cell.js",
-    "/js/levels.js",
-    "/js/ui.js",
+    "/paint-game/",
+    "/paint-game/index.html",
+    "/paint-game/js/board.js",
+    "/paint-game/js/cell.js",
+    "/paint-game/js/levels.js",
+    "/paint-game/js/ui.js",
 
-    "/favicon.ico",
-    "/icon.svg",
-    "/icon.png",
-    "/site.webmanifest",
+    "/paint-game/favicon.ico",
+    "/paint-game/icon.svg",
+    "/paint-game/icon.png",
+    "/paint-game/site.webmanifest",
 ];
 
 const addResourcesToCache = async (resources) => {
