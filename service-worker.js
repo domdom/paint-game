@@ -35,14 +35,14 @@ const fetchFirst = async (event, request) => {
         if (netResponse.ok) {
             event.waitUntil(putInCache(request, netResponse.clone()));
         } else {
-            const cacheResponse = await caches.match(request);
+            const cacheResponse = await caches.match(request, {ignoreSearch: true});
             if (cacheResponse) {
                 return cacheResponse;
             }
         }
         return netResponse;
     } catch (error) {
-        const cacheResponse = await caches.match(request);
+        const cacheResponse = await caches.match(request, {ignoreSearch: true});
         if (cacheResponse) {
             return cacheResponse;
         }
