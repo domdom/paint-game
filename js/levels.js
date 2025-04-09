@@ -9,11 +9,18 @@ let LEVELS = (() => {
     let S = CellKind.Start;
     return [
         {
-            name: 'small', maxMoves: 5, grid: [
-                [S, R, R, R,],
-                [E, E, E, E,],
-                [R, R, R, R,],
-                [R, R, R, S,],
+            name: 'grid', maxMoves: 25, grid: [
+                [S, R, R, R, R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
             ]
         },
         {
@@ -64,26 +71,12 @@ let LEVELS = (() => {
                 [E, R, R, R, R, E, R, R, R, R, E,],
                 [R, R, R, R, R, R, R, R, R, R, R,],
                 [R, R, R, R, R, R, R, R, R, R, R,],
-                [R, R, R, R, R, S, R, R, R, R, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
                 [E, R, R, R, R, R, R, R, R, R, E,],
                 [E, R, R, R, R, R, R, R, R, R, E,],
                 [E, E, R, R, R, R, R, R, R, E, E,],
                 [E, E, E, E, R, R, R, E, E, E, E,],
-                [E, E, E, E, E, R, E, E, E, E, E,],
-            ]
-        },
-        {
-            name: 'EMPTY', maxMoves: 25, grid: [
-                [E, E, E, E, E, E, E, E, E, E,],
-                [E, E, E, E, E, E, E, E, E, E,],
-                [E, E, E, E, E, E, E, E, E, E,],
-                [E, E, E, E, E, E, E, E, E, E,],
-                [E, E, E, E, E, E, E, E, E, E,],
-                [E, E, E, E, E, E, E, E, E, E,],
-                [E, E, E, E, E, E, E, E, E, E,],
-                [E, E, E, E, E, E, E, E, E, E,],
-                [E, E, E, E, E, E, E, E, E, E,],
-                [E, E, E, E, E, E, E, E, E, E,],
+                [E, E, E, E, E, S, E, E, E, E, E,],
             ]
         },
         {
@@ -102,17 +95,11 @@ let LEVELS = (() => {
             ]
         },
         {
-            name: 'PENIS', maxMoves: 13, grid: [
-                [E, E, E, E, E, R, E, E, E, E,],
-                [E, E, E, E, R, R, R, E, E, E,],
-                [E, E, E, E, R, R, R, E, E, E,],
-                [E, E, E, E, R, R, R, E, E, E,],
-                [E, E, E, E, R, R, R, E, E, E,],
-                [E, E, E, E, R, R, R, E, E, E,],
-                [E, E, R, R, R, R, R, R, R, E,],
-                [E, R, R, R, R, S, R, R, R, R,],
-                [E, E, R, R, R, E, R, R, R, E,],
-                [E, E, E, E, E, E, E, E, E, E,],
+            name: 'small', maxMoves: 5, grid: [
+                [S, R, R, R,],
+                [E, E, E, E,],
+                [R, R, R, R,],
+                [R, R, R, S,],
             ]
         },
     ];
