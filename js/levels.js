@@ -9,18 +9,14 @@ let LEVELS = (() => {
     let S = CellKind.Start;
     return [
         {
-            name: 'grid', maxMoves: 25, grid: [
-                [S, R, R, R, R, R, R, R, R, R, R,],
-                [R, E, R, E, R, E, R, E, R, E, R,],
-                [R, R, R, R, R, R, R, R, R, R, R,],
-                [R, E, R, E, R, E, R, E, R, E, R,],
-                [R, R, R, R, R, R, R, R, R, R, R,],
-                [R, E, R, E, R, E, R, E, R, E, R,],
-                [R, R, R, R, R, R, R, R, R, R, R,],
-                [R, E, R, E, R, E, R, E, R, E, R,],
-                [R, R, R, R, R, R, R, R, R, R, R,],
-                [R, E, R, E, R, E, R, E, R, E, R,],
-                [R, R, R, R, R, R, R, R, R, R, R,],
+            name: 'grid', maxMoves: 20, grid: [
+                [S, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R,],
             ]
         },
         {
@@ -49,6 +45,21 @@ let LEVELS = (() => {
                 [E, E, E, R, R, R, R, E, E, E,],
                 [E, E, E, R, R, R, R, E, E, E,],
                 [E, E, E, R, R, R, R, E, E, E,],
+            ]
+        },
+        {
+            name: 'tiles', maxMoves: 25, grid: [
+                [S, R, R, R, R, R, R, R, R, R, R,],
+                [R, R, R, E, R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
+                [R, E, R, E, R, E, R, E, R, E, R,],
+                [R, R, R, R, R, R, R, R, R, R, R,],
             ]
         },
         {
