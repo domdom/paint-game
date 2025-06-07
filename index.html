@@ -325,7 +325,9 @@
 
     let target = document.getElementById('target');
 
-    setColor(target, getRandomColor());
+    let targetColor = board.target || getRandomColor();
+
+    setColor(target, targetColor);
 
     BOARD.init(board.name, board.grid, board.maxMoves)
   }
