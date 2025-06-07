@@ -128,7 +128,7 @@ let LEVELS = (() => {
                 [R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R,],
                 [R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R,],
                 [R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R,],
-                [R, R, R, R, R, R, E, E, R, S, R, R, R, R, E, E, R, S, R, R, R, R, E, E, R, S, R, R, R, R, E, E, R, S, R, R, R, R, E, E, R, S, R, R, R, R, E, E, R, S, R, R, R, R, E, E, R, S,],
+                [R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R,],
             ]
         },
         {
