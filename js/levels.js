@@ -34,6 +34,17 @@ let LEVELS = (() => {
             ]
         },
         {
+            name: 'jewel', maxMoves: 20, grid: [
+                [S, R, R, R, R, R, R,],
+                [R, E, E, R, E, E, R,],
+                [R, E, R, R, R, E, R,],
+                [R, R, R, E, R, R, R,],
+                [R, E, R, R, R, E, R,],
+                [R, E, E, R, E, E, R,],
+                [R, R, R, R, R, R, R,],
+            ]
+        },
+        {
             name: 'cross', maxMoves: 25, grid: [
                 [E, E, E, S, R, R, R, E, E, E,],
                 [E, E, E, R, R, R, R, E, E, E,],
@@ -111,6 +122,11 @@ let LEVELS = (() => {
                 [E, E, E, E,],
                 [R, R, R, R,],
                 [R, R, R, S,],
+            ]
+        },
+        {
+            name: 'one', maxMoves: 1, grid: [
+                [S, R],
             ]
         },
     ];
