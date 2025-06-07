@@ -29,6 +29,27 @@ let LEVELS = (() => {
             ]
         },
         {
+            name: 'lil\' em' , maxMoves: 11, grid: [
+                [R, R, R, R, R,],
+                [R, E, R, E, R,],
+                [S, E, R, E, R,],
+            ]
+        },
+        {
+            name: '& M', maxMoves: 30, grid: [
+                [R, R, R, E, E, R, R, R, E, E, R, R, R,],
+                [R, R, R, R, R, R, R, R, R, R, R, R, R,],
+                [R, R, R, E, E, R, R, R, E, E, R, R, R,],
+                [R, R, R, E, E, R, R, R, E, E, R, R, R,],
+                [R, R, R, E, E, R, R, R, E, E, R, R, R,],
+                [R, R, R, E, E, R, R, R, E, E, R, R, R,],
+                [R, R, R, E, E, R, R, R, E, E, R, R, R,],
+                [R, R, R, E, E, R, R, R, E, E, R, R, R,],
+                [R, S, R, E, E, R, R, R, E, E, R, R, R,],
+                [R, R, R, E, E, R, R, R, E, E, R, R, R,],
+            ]
+        },
+        {
             name: 'circle', maxMoves: 25, grid: [
                 [E, E, S, R, R, R, R, R, E, E,],
                 [E, R, R, R, R, R, R, R, R, E,],
@@ -122,6 +143,20 @@ let LEVELS = (() => {
                 [E, E, R, R, R, R, R, R, R, E, E,],
                 [E, E, E, E, R, R, R, E, E, E, E,],
                 [E, E, E, E, E, S, E, E, E, E, E,],
+            ]
+        },
+        {
+            name: '5xrandom swirl', target: CellColors.Red, maxMoves: 46, grid: [
+                [R, R, R, R, R, R, R, R, E, R, R, R, R, R, R, R, R, R, R, R,],
+                [R, R, R, R, R, R, R, R, E, R, R, R, R, R, R, R, R, R, R, R,],
+                [R, R, E, E, E, E, R, R, E, R, R, E, E, E, E, E, E, E, R, R,],
+                [R, R, E, R, R, E, R, R, E, R, R, E, R, R, R, R, R, E, R, R,],
+                [R, R, E, S, R, E, R, R, E, R, R, E, R, R, R, R, R, E, R, R,],
+                [R, R, E, R, R, R, R, R, E, R, R, E, R, R, E, R, R, E, R, R,],
+                [R, R, E, R, R, R, R, R, E, R, R, E, R, R, E, R, R, E, R, R,],
+                [R, R, E, E, E, E, E, E, E, R, R, E, R, R, E, E, E, E, R, R,],
+                [R, R, R, R, R, R, R, R, R, R, R, E, R, R, R, R, R, R, R, R,],
+                [R, R, R, R, R, R, R, R, R, R, R, E, R, R, R, R, R, R, R, R,],
             ]
         },
         {
