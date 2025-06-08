@@ -21,6 +21,7 @@
       min-width: fit-content;
       font-family: Verdana, sans-serif;
     }
+
     #container {
       padding: 1em;
       margin-left: auto;
@@ -175,27 +176,27 @@
     .cell[data-color="start"] {
       position: relative;
       background: repeating-linear-gradient(
-              90deg,
-              oklch(from var(--color-1) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 0%)),
-              oklch(from var(--color-2) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 16%)),
-              oklch(from var(--color-3) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 33%)),
-              oklch(from var(--color-4) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 50%)),
-              oklch(from var(--color-5) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 66%)),
-              oklch(from var(--color-6) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 83%)),
-              oklch(from var(--color-1) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 100%))
+          90deg,
+          oklch(from var(--color-1) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 0%)),
+          oklch(from var(--color-2) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 16%)),
+          oklch(from var(--color-3) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 33%)),
+          oklch(from var(--color-4) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 50%)),
+          oklch(from var(--color-5) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 66%)),
+          oklch(from var(--color-6) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 83%)),
+          oklch(from var(--color-1) calc(l - 0.15) c h) calc(2.828% + 2.82842712 * (var(--start-offset) + 8% + 100%))
       );
     }
 
     .cell[data-color="start"]::after {
       background: repeating-linear-gradient(
-              45deg,
-              var(--color-1) calc(2 * (var(--start-offset) + 0%)),
-              var(--color-2) calc(2 * (var(--start-offset) + 16%)),
-              var(--color-3) calc(2 * (var(--start-offset) + 33%)),
-              var(--color-4) calc(2 * (var(--start-offset) + 50%)),
-              var(--color-5) calc(2 * (var(--start-offset) + 66%)),
-              var(--color-6) calc(2 * (var(--start-offset) + 83%)),
-              var(--color-1) calc(2 * (var(--start-offset) + 100%))
+          45deg,
+          var(--color-1) calc(2 * (var(--start-offset) + 0%)),
+          var(--color-2) calc(2 * (var(--start-offset) + 16%)),
+          var(--color-3) calc(2 * (var(--start-offset) + 33%)),
+          var(--color-4) calc(2 * (var(--start-offset) + 50%)),
+          var(--color-5) calc(2 * (var(--start-offset) + 66%)),
+          var(--color-6) calc(2 * (var(--start-offset) + 83%)),
+          var(--color-1) calc(2 * (var(--start-offset) + 100%))
       );
       mask-repeat: no-repeat;
       mask-size: cover;
@@ -335,23 +336,23 @@
   updateBoard();
 </script>
 <script>
-    const registerServiceWorker = async () => {
-        if ("serviceWorker" in navigator) {
-            try {
-                const registration = await navigator.serviceWorker.register("/paint-game/service-worker.js");
-                if (registration.installing) {
-                    console.log("Service worker installing");
-                } else if (registration.waiting) {
-                    console.log("Service worker installed");
-                } else if (registration.active) {
-                    console.log("Service worker active");
-                }
-            } catch (error) {
-                console.error(`Registration failed with ${error}`);
-            }
+  const registerServiceWorker = async () => {
+    if ("serviceWorker" in navigator) {
+      try {
+        const registration = await navigator.serviceWorker.register("/paint-game/service-worker.js");
+        if (registration.installing) {
+          console.log("Service worker installing");
+        } else if (registration.waiting) {
+          console.log("Service worker installed");
+        } else if (registration.active) {
+          console.log("Service worker active");
         }
-    };
-    registerServiceWorker();
+      } catch (error) {
+        console.error(`Registration failed with ${error}`);
+      }
+    }
+  };
+  registerServiceWorker();
 </script>
 </body>
 </html>
