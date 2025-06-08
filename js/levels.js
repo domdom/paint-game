@@ -78,7 +78,7 @@ let LEVELS = (() => {
             ]
         },
         {
-            name: 'cross', maxMoves: 25, grid: [
+            name: 'cross', maxMoves: 22, grid: [
                 [E, E, E, S, R, R, R, E, E, E,],
                 [E, E, E, R, R, R, R, E, E, E,],
                 [E, E, E, R, R, R, R, E, E, E,],
@@ -89,21 +89,6 @@ let LEVELS = (() => {
                 [E, E, E, R, R, R, R, E, E, E,],
                 [E, E, E, R, R, R, R, E, E, E,],
                 [E, E, E, R, R, R, R, E, E, E,],
-            ]
-        },
-        {
-            name: 'tiles', maxMoves: 25, grid: [
-                [S, R, R, R, R, R, R, R, R, R, R,],
-                [R, R, R, E, R, E, R, E, R, E, R,],
-                [R, R, R, R, R, R, R, R, R, R, R,],
-                [R, E, R, E, R, E, R, E, R, E, R,],
-                [R, R, R, R, R, R, R, R, R, R, R,],
-                [R, E, R, E, R, E, R, E, R, E, R,],
-                [R, R, R, R, R, R, R, R, R, R, R,],
-                [R, E, R, E, R, E, R, E, R, E, R,],
-                [R, R, R, R, R, R, R, R, R, R, R,],
-                [R, E, R, E, R, E, R, E, R, E, R,],
-                [R, R, R, R, R, R, R, R, R, R, R,],
             ]
         },
         {
@@ -135,7 +120,7 @@ let LEVELS = (() => {
             ]
         },
         {
-            name: 'dom loves you!', target: CellColors.Red, maxMoves: 25, grid: [
+            name: 'dom loves you!', target: CellColors.Red, maxMoves: 20, grid: [
                 [E, E, E, R, E, E, E, R, E, E, E,],
                 [E, R, R, R, R, E, R, R, R, R, E,],
                 [R, R, R, R, R, R, R, R, R, R, R,],
@@ -149,7 +134,7 @@ let LEVELS = (() => {
             ]
         },
         {
-            name: '5xrandom swirl', target: CellColors.Red, maxMoves: 46, grid: [
+            name: '5xrandom swirl', maxMoves: 120, grid: [
                 [R, R, R, R, R, R, R, R, E, R, R, R, R, R, R, R, R, R, R, R,],
                 [R, R, R, R, R, R, R, R, E, R, R, R, R, R, R, R, R, R, R, R,],
                 [R, R, E, E, E, E, R, R, E, R, R, E, E, E, E, E, E, E, R, R,],
@@ -178,7 +163,7 @@ let LEVELS = (() => {
             ]
         },
         {
-            name: 'small', maxMoves: 5, grid: [
+            name: 'small', maxMoves: 7, grid: [
                 [S, R, R, R,],
                 [E, E, E, E,],
                 [R, R, R, R,],
