@@ -11,6 +11,9 @@ const CellColors = {
     Green: 4,
     Blue: 5,
     Purple: 6,
+    // Special cell colors
+    Start: 'start',
+    Empty: 'empty',
 };
 let LEVELS = (() => {
     let E = CellKind.Empty;
@@ -118,7 +121,7 @@ let LEVELS = (() => {
             ]
         },
         {
-            name: 'snnnnnnnaaaaaaaaaakkkkkkkkeeeee', maxMoves: 100, grid: [
+            name: 'snnnnnnnaaaaaaaaaakkkkkkkkeeeee', maxMoves: 273, grid: [
                 [S, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R,],
                 [R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R, E, E, R, R, R, R, R, R,],
                 [R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R, E, E, R, R,],

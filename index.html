@@ -333,6 +333,35 @@
     BOARD.init(board.name, board.grid, board.maxMoves)
   }
 
+  function AutoPlay(callback = null) {
+    function stepSolve() {
+      if (BOARD.playBestMove()) {
+        requestAnimationFrame(stepSolve);
+      } else if (callback) {
+        callback();
+      }
+    }
+    stepSolve();
+  }
+
+  function Sample(count, samples = []) {
+    if (count > 0) {
+      updateBoard();
+      AutoPlay(() => {
+        if (BOARD.state.start.length === 0) {
+          samples.push(BOARD.state.moves);
+        } else {
+          console.log('FAIL: ', BOARD.state.moves);
+        }
+        Sample(count - 1, samples);
+      })
+      return;
+    }
+
+    console.log("Samples: ", samples);
+    console.log("Average: ", samples.reduce((a, b) => a + b) / samples.length);
+  }
+
   updateBoard();
 </script>
 <script>

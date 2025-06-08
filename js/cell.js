@@ -4,56 +4,48 @@ const CellSpecials = {
     Key: {icon: 'key'},
     Reset: {icon: 'reset'},
 };
+const CellSpecialIcons = [CellSpecials.Locked.icon, CellSpecials.Key.icon, CellSpecials.Reset.icon];
 
-class Cell {
-    dom;
+class PureCell {
     #color = null;
+    #special = null;
+    id;
     row;
     column;
 
-    constructor(row, column) {
-        this.dom = document.createElement('div');
-        this.dom.classList.add('cell');
-
+    constructor(id, row, column) {
+        this.id = id;
         this.row = row;
         this.column = column;
     }
 
     setColor(color) {
         this.#color = color;
-        setColor(this.dom, this.getColor());
         return this;
     }
 
     canFlood(color) {
-        return this.#color === color && !this.special?.opaque;
+        return this.#color === color && !this.#special?.opaque;
     }
 
     getColor() {
-        if (this.special?.opaque) {
+        if (this.#special?.opaque) {
             return null;
         }
         return this.#color;
     }
 
     setSpecial(special) {
-        if (special === null) {
-            // this.dom.innerHTML = '';
-            this.dom.classList.remove(this.special?.icon)
-        } else {
-            this.dom.classList.add(special?.icon)
-            // let img = document.createElement("img");
-            // img.src = 'icons.svg#' + special.icon;
-            // this.dom.appendChild(img);
-        }
-        this.special = special;
-        this.setColor(this.#color);
+        this.#special = special;
         return this;
+    }
+
+    getSpecial() {
+        return this.#special;
     }
 
     removeSpecial() {
-        this.setSpecial(null);
+        this.#special = null;
         return this;
     }
 }
-

@@ -1,15 +1,5 @@
-class Board {
-    constructor(parent) {
-        this.dom = document.createElement('div');
-        this.dom.classList.add('board');
-        if (parent) {
-            parent.appendChild(this.dom);
-        }
-    }
-
-    init(name, grid, maxMoves) {
-        this.dom.innerHTML = '';
-
+class PureBoard {
+    constructor(name, grid, maxMoves) {
         this.levelName = name;
 
         this.cells = [];
@@ -28,22 +18,19 @@ class Board {
         this.height = grid.length;
         this.width = grid[0].length;
 
-        this.dom.style.setProperty('--board-size', grid[0].length);
-
         let random = [];
 
         for (let row = 0; row < grid.length; row++) {
             for (let column = 0; column < grid[row].length; column++) {
-                let cell = new Cell(row, column);
+                let cell = new PureCell(this.cells.length, row, column);
                 this.cells.push(cell);
 
                 if (grid[row][column] === CellKind.Start) {
-                    cell.setColor('start');
+                    cell.setColor(CellColors.Start);
                     this.start.push(cell);
                 }
                 if (grid[row][column] === CellKind.Empty) {
-                    cell.setColor('empty');
-                    this.cells[this.cells.length - 1] = null;
+                    cell.setColor(CellColors.Empty);
                 }
                 if (grid[row][column] === CellKind.Random) {
                     let color = getRandomColor();
@@ -52,18 +39,8 @@ class Board {
                         color = getRandomColor();
                     }
                     cell.setColor(color);
-
-                    cell.dom.onclick = () => {
-                        if (cell.getColor() === null) return;
-                        if (cell.getColor() === this.currentColor) return;
-
-                        this.floodColor(cell.getColor());
-                        this.moves += 1;
-                        this.updateDoms();
-                    };
                     random.push(cell);
                 }
-                this.dom.appendChild(cell.dom);
             }
         }
 
@@ -76,8 +53,6 @@ class Board {
         if (freeCells.length >= 1) {
             this.special.reset = freeCells.pop().setSpecial(CellSpecials.Reset);
         }
-
-        this.updateDoms();
     }
 
     getCell(row, column) {
@@ -94,7 +69,7 @@ class Board {
         let neighbors = [];
         for (let i = 0; i < 4; i++) {
             let nc = this.getCell(row + dr[i], column + dc[i]);
-            if (nc !== null) {
+            if (nc !== null && nc.getColor() !== CellColors.Empty) {
                 neighbors.push(nc);
             }
         }
@@ -132,7 +107,11 @@ class Board {
     }
 
     floodColor(newColor) {
+        if (newColor === null) return;
+        if (newColor === this.currentColor) return;
         this.currentColor = newColor;
+
+        this.moves += 1;
 
         let hadDirty = false;
         do {
@@ -167,6 +146,7 @@ class Board {
                         if (!cell) continue;
                         if (this.owned.has(cell)) continue;
                         if (cell.getColor() === null) continue;
+                        if (cell.getColor() === CellColors.Empty) continue;
 
                         let color = getRandomColor();
                         if (this.getCell(cell.row - 1, cell.column)?.getColor() === color ||
@@ -184,21 +164,113 @@ class Board {
             }
         } while (hadDirty);
 
+        for (let cell of this.owned) {
+            cell.setColor(this.currentColor);
+        }
+    }
+
+    bestColor() {
+        if (this.start.length === 0) {
+            return null;
+        }
+        let colorCount = new Array(10);
+        colorCount.fill(0, 0);
+        for (let cell of this.start) {
+            for (let nc of this.getAvailableNeighbors(cell)) {
+                let color = parseInt(nc.getColor());
+                if (color) {
+                    colorCount[color]++;
+                }
+            }
+        }
+        let max = 0;
+        let maxColor = [];
+        for (let i = 0; i < colorCount.length; i++) {
+            if (colorCount[i] === 0) continue;
+            if (colorCount[i] === max) {
+                maxColor.push(i);
+                continue;
+            }
+            if (colorCount[i] > max) {
+                max = colorCount[i];
+                maxColor = [i];
+            }
+        }
+
+        if (maxColor.length === 0)
+            return null;
+
+        return '' + getRandom(maxColor);
+    }
+}
+
+class Board {
+    constructor(parent) {
+        this.dom = document.createElement('div');
+        this.dom.classList.add('board');
+        if (parent) {
+            parent.appendChild(this.dom);
+        }
+    }
+
+    init(name, grid, maxMoves) {
+        this.dom.innerHTML = '';
+
+        this.state = new PureBoard(name, grid, maxMoves);
+
+        this.dom.style.setProperty('--board-size', this.state.width);
+
+        this.cellMap = [];
+        for (let cell of this.state.cells) {
+            let cellDom = document.createElement('div');
+            cellDom.classList.add('cell');
+            let cellColor = cell.getColor();
+            if (cellColor !== CellColors.Empty && cellColor !== CellColors.Start) {
+                cellDom.onclick = e => {
+                    this.state.floodColor(cell.getColor());
+                    this.updateDoms();
+                };
+            }
+            this.cellMap.push(cellDom)
+            this.dom.appendChild(cellDom);
+        }
+
         this.updateDoms();
     }
 
     updateDoms() {
-        for (let cell of this.owned) {
-            cell.setColor(this.currentColor);
-            cell.dom.classList.add('selected');
+        for (let cell of this.state.cells) {
+            let cellDom = this.cellMap[cell.id];
+
+            if (this.state.owned.has(cell)) {
+                cellDom.classList.add('selected');
+            }
+
+            let cellSpecial = cell.getSpecial();
+            if (cellSpecial === null) {
+                cellDom.classList.remove(...CellSpecialIcons);
+            } else {
+                cellDom.classList.add(cellSpecial.icon);
+            }
+            setColor(cellDom, cell.getColor());
         }
-        if (this.currentColor !== null) {
-            this.dom.setAttribute('data-last', this.currentColor);
+        if (this.state.currentColor !== null) {
+            this.dom.setAttribute('data-last', this.state.currentColor);
         } else {
             this.dom.removeAttribute('data-last');
         }
-        document.title = "SPG: " + this.levelName;
-        document.getElementById('moves').innerText = this.moves;
-        document.getElementById('maxMoves').innerText = this.maxMoves;
+        document.title = "SPG: " + this.state.levelName;
+        document.getElementById('moves').innerText = this.state.moves;
+        document.getElementById('maxMoves').innerText = this.state.maxMoves;
+    }
+
+    playBestMove() {
+        let bestMove = this.state.bestColor();
+        if (bestMove !== null) {
+            this.state.floodColor(bestMove);
+            this.updateDoms();
+            return true;
+        }
+        return false;
     }
 }
